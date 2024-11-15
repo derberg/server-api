@@ -1,6 +1,6 @@
 {
   "name": "@asyncapi/server-api",
-  "version": "0.0.1",
+  "version": "0.16.22",
   "description": "Server API providing official AsyncAPI tools",
   "license": "Apache-2.0",
   "homepage": "https://github.com/asyncapi/server-api",
@@ -36,31 +36,32 @@
     "lint:fix": "eslint --max-warnings 0 --config .eslintrc . --fix",
     "generate:assets": "npm run generate:readme:toc",
     "generate:readme:toc": "markdown-toc -i README.md",
-    "generate:docker": "docker build --tag asyncapi/server-api .",
-    "release": "npm run generate:docker && semantic-release"
+    "docker:build": "docker build --tag asyncapi/server-api .",
+    "bump:version": "npm --no-git-tag-version --allow-same-version version $VERSION"
   },
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^9.0.9",
+    "@apidevtools/json-schema-ref-parser": "^10.1.0",
     "@asyncapi/avro-schema-parser": "^1.1.0",
-    "@asyncapi/bundler": "^0.2.2",
-    "@asyncapi/converter": "^1.0.0",
-    "@asyncapi/diff": "^0.4.0",
-    "@asyncapi/dotnet-nats-template": "^0.8.3",
-    "@asyncapi/generator": "^1.9.9",
-    "@asyncapi/go-watermill-template": "^0.2.10",
-    "@asyncapi/html-template": "^0.25.1",
-    "@asyncapi/java-spring-cloud-stream-template": "^0.13.0",
-    "@asyncapi/java-spring-template": "^0.28.0",
-    "@asyncapi/java-template": "^0.1.1",
-    "@asyncapi/markdown-template": "^1.1.1",
-    "@asyncapi/nodejs-template": "^0.11.4",
-    "@asyncapi/nodejs-ws-template": "^0.9.24",
-    "@asyncapi/openapi-schema-parser": "^2.0.1",
-    "@asyncapi/parser": "^1.16.0",
+    "@asyncapi/bundler": "^0.4.0",
+    "@asyncapi/converter": "^1.4.17",
+    "@asyncapi/diff": "^0.4.1",
+    "@asyncapi/dotnet-nats-template": "^0.12.1",
+    "@asyncapi/generator": "^1.9.18",
+    "@asyncapi/go-watermill-template": "^0.2.74",
+    "@asyncapi/html-template": "^0.28.4",
+    "@asyncapi/java-spring-cloud-stream-template": "^0.13.4",
+    "@asyncapi/java-spring-template": "^1.5.0",
+    "@asyncapi/java-template": "^0.2.0",
+    "@asyncapi/markdown-template": "^1.4.0",
+    "@asyncapi/nodejs-template": "^2.0.1",
+    "@asyncapi/nodejs-ws-template": "^0.9.33",
+    "@asyncapi/openapi-schema-parser": "^2.0.3",
+    "@asyncapi/parser": "^1.18.1",
+    "@asyncapi/problem": "^1.0.0",
     "@asyncapi/python-paho-template": "^0.2.13",
     "@asyncapi/raml-dt-schema-parser": "^2.0.1",
-    "@asyncapi/specs": "^3.1.0",
-    "@asyncapi/ts-nats-template": "^0.5.21",
+    "@asyncapi/specs": "^4.2.1",
+    "@asyncapi/ts-nats-template": "^0.10.3",
     "ajv": "^8.8.2",
     "ajv-formats": "^2.1.1",
     "archiver": "^5.3.0",
@@ -69,17 +70,14 @@
     "config": "^3.3.6",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "helmet": "^5.0.2",
+    "helmet": "^6.0.1",
     "js-yaml": "^4.1.0",
     "redoc-express": "^1.0.0",
+    "types": "^0.1.1",
     "uuid": "^8.3.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@semantic-release-plus/docker": "^3.1.0",
-    "@semantic-release/commit-analyzer": "^9.0.2",
-    "@semantic-release/github": "^8.0.2",
-    "@semantic-release/release-notes-generator": "^10.0.3",
     "@types/archiver": "^5.1.1",
     "@types/body-parser": "^1.19.1",
     "@types/compression": "^1.7.2",
@@ -94,7 +92,6 @@
     "@types/uuid": "^8.3.1",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
-    "conventional-changelog-conventionalcommits": "^4.6.3",
     "cross-env": "^7.0.3",
     "eslint": "^8.4.1",
     "eslint-plugin-security": "^1.4.0",
@@ -102,37 +99,9 @@
     "jest": "^27.4.1",
     "markdown-toc": "^1.2.0",
     "nodemon": "^2.0.13",
-    "semantic-release": "^19.0.2",
     "supertest": "^6.1.6",
     "ts-jest": "^27.0.7",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
-  },
-  "release": {
-    "branches": [
-      "master"
-    ],
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "conventionalcommits"
-        }
-      ],
-      [
-        "@semantic-release/release-notes-generator",
-        {
-          "preset": "conventionalcommits"
-        }
-      ],
-      "@semantic-release/github",
-      [
-        "@semantic-release-plus/docker",
-        {
-          "name": "asyncapi/server-api",
-          "publishChannelTag": true
-        }
-      ]
-    ]
   }
 }
